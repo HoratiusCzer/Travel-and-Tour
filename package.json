@@ -11,7 +11,10 @@
     "lint": "tsc --noEmit"
   },
   "dependencies": {
+    "framer-motion": "^14.7.1",
+    "lucide-react": "^1.64.0",
     "next": "^15.5.28",
+    "ogl": "^1.0.11",
     "react": "^19.3.1",
     "react-dom": "^19.3.1"
   },

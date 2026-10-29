@@ -175,6 +175,30 @@
   }
 }
 
+/* Logo hover: the wave drifts sideways and back, and the sun rises 1px. */
+@keyframes logo-wave {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(3px);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .brand-sun {
+    transition: transform 0.4s ease-in-out;
+  }
+  .brand-logo:hover .brand-sun,
+  .brand-logo:focus-visible .brand-sun {
+    transform: translateY(-1px);
+  }
+  .brand-logo:hover .brand-wave,
+  .brand-logo:focus-visible .brand-wave {
+    animation: logo-wave 1.2s ease-in-out;
+  }
+}
+
 @keyframes page-in {
   from {
     opacity: 0;

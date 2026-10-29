@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-import { Logo } from "./Logo";
+import { Logo } from "@/components/brand/Logo";
 
 export function Footer() {
   return (
@@ -25,14 +25,14 @@ export function Footer() {
           <div>
             <h3 className="font-sans text-sm font-semibold uppercase tracking-wider text-white">Say hello</h3>
             <ul className="mt-4 space-y-2 text-sm">
-              <li>hello@travelsandtour.example</li>
+              <li>hello@ridgeandreef.example</li>
               <li>+977 1 555 0142</li>
               <li>Thamel, Kathmandu</li>
             </ul>
           </div>
         </div>
         <p className="mt-12 border-t border-white/10 pt-6 text-xs text-lagoon-50/60">
-          © {new Date().getFullYear()} Travels and Tour. Built by Softsaro Nepal.
+          © {new Date().getFullYear()} Ridge &amp; Reef. Built by Softsaro Nepal.
         </p>
       </Container>
     </footer>

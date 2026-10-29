@@ -29,7 +29,7 @@ export function About() {
             title="Travel planned by people who love to wander"
           />
           <p className="-mt-6 text-ink-800/80 dark:text-lagoon-50/75">
-            Travels and Tour started with a simple idea: a good trip should feel personal, not
+            Ridge &amp; Reef started with a simple idea: a good trip should feel personal, not
             packaged. We keep groups small, hire local guides and leave breathing room in every
             itinerary for the detours you will talk about later.
           </p>

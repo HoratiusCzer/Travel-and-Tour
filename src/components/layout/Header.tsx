@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { SavedLink } from "@/components/wishlist/SavedLink";
 import { cn } from "@/lib/cn";
-import { Logo } from "./Logo";
+import { Logo } from "@/components/brand/Logo";
 import { ThemeToggle } from "./ThemeToggle";
 
 const links = [
@@ -79,7 +79,7 @@ export function Header() {
       {/* Three equal-weight columns keep the links centered on the page whatever the side groups' widths. */}
       <div className="mx-auto grid h-16 max-w-6xl grid-cols-[1fr_auto] items-center px-4 sm:px-6 lg:grid-cols-[1fr_auto_1fr] lg:px-8">
         <div className="justify-self-start">
-          <Logo />
+          <Logo collapseOnTiny />
         </div>
         <nav aria-label="Main" className="hidden items-center gap-8 justify-self-center lg:flex">
           {links.map((l) => (
@@ -99,6 +99,16 @@ export function Header() {
           ))}
         </nav>
         <div className="flex items-center gap-2 justify-self-end">
+          <Link
+            href="/login"
+            aria-label="Sign in"
+            className="grid h-10 w-10 place-items-center rounded-full border border-lagoon-600/30 text-ink-800 transition hover:bg-lagoon-50 dark:border-lagoon-400/30 dark:text-lagoon-50 dark:hover:bg-lagoon-900"
+          >
+            <svg viewBox="0 0 24 24" className="h-5 w-5 fill-none stroke-current" strokeWidth="2" aria-hidden>
+              <circle cx="12" cy="8" r="4" />
+              <path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.500 8 6.500" strokeLinecap="round" />
+            </svg>
+          </Link>
           <SavedLink />
           <ThemeToggle />
           <button

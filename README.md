@@ -1,8 +1,8 @@
-# Travels and Tour
+# Ridge & Reef
 
 **Author:** Softsaro Nepal
 
-Travels and Tour is a modern, responsive travel and tourism website built with Next.js (App Router),
+Ridge & Reef is a modern, responsive travel and tourism website built with Next.js (App Router),
 TypeScript and Tailwind CSS. Visitors can search destinations, browse tour packages with prices,
 read destination details, and get in touch, in light or dark mode.
 
