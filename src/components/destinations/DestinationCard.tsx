@@ -9,7 +9,7 @@ export function DestinationCard({ destination }: { destination: Destination }) {
     <div className="relative">
       <Link
         href={`/destinations/${destination.slug}`}
-        className="group relative block overflow-hidden rounded-2xl bg-ink-900 shadow-md"
+        className="img-reveal group relative block bg-ink-900 shadow-md"
       >
         <div className="relative aspect-[4/5]">
           <Image
@@ -17,7 +17,7 @@ export function DestinationCard({ destination }: { destination: Destination }) {
             alt={`${destination.name}, ${destination.country}`}
             fill
             sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-            className="object-cover transition duration-500 group-hover:scale-105"
+            className="object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-ink-950/85 via-ink-950/10 to-transparent" />
         </div>

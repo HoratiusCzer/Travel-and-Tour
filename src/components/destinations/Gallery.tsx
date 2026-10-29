@@ -55,14 +55,14 @@ export function Gallery({ items }: { items: GalleryItem[] }) {
               lastTrigger.current = e.currentTarget;
               setOpen(i);
             }}
-            className="group relative aspect-[4/3] overflow-hidden rounded-xl"
+            className="img-reveal relative aspect-[4/3] rounded-xl"
           >
             <Image
               src={item.src}
               alt={item.alt}
               fill
               sizes="(min-width: 768px) 25vw, 50vw"
-              className="object-cover transition duration-500 group-hover:scale-105"
+              className="object-cover"
             />
           </button>
         ))}
