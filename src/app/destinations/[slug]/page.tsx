@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Gallery } from "@/components/destinations/Gallery";
 import { PackageCard } from "@/components/packages/PackageCard";
+import { HeartButton } from "@/components/wishlist/HeartButton";
+import { destinationKey } from "@/lib/wishlist-keys";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { Container } from "@/components/ui/Container";
 import { destinations, getDestination } from "@/data/destinations";
@@ -26,6 +29,15 @@ export default async function DestinationPage({ params }: { params: Params }) {
   if (!destination) notFound();
 
   const related = packages.filter((p) => p.destinationSlug === destination.slug);
+  // Only one photo per destination exists, so the gallery pairs it with similar destinations.
+  const galleryItems = [
+    destination,
+    ...destinations.filter((d) => d.category === destination.category && d.slug !== destination.slug),
+  ].map((d) => ({
+    src: d.image,
+    alt: `${d.name}, ${d.country}`,
+    caption: `${d.name}, ${d.country}`,
+  }));
   const facts = [
     { label: "Best season", value: destination.bestSeason },
     { label: "Ideal stay", value: destination.idealStay },
@@ -82,7 +94,18 @@ export default async function DestinationPage({ params }: { params: Params }) {
           <ButtonLink href="/#contact" className="mt-6 w-full">
             Plan this trip
           </ButtonLink>
+          <HeartButton
+            itemKey={destinationKey(destination.slug)}
+            name={destination.name}
+            showLabel
+            className="mt-3 w-full"
+          />
         </aside>
+      </Container>
+
+      <Container className="pb-14">
+        <h2 className="mb-6 text-2xl font-semibold text-ink-900 dark:text-white">Gallery</h2>
+        <Gallery items={galleryItems} />
       </Container>
 
       {related.length > 0 && (

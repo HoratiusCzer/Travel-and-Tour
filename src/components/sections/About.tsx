@@ -1,11 +1,12 @@
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
+import { CountUp } from "@/components/ui/CountUp";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 const stats = [
-  { value: "12k+", label: "Happy travellers" },
-  { value: "40+", label: "Countries covered" },
-  { value: "98%", label: "Would book again" },
+  { to: 12, suffix: "k+", label: "Happy travellers" },
+  { to: 40, suffix: "+", label: "Countries covered" },
+  { to: 98, suffix: "%", label: "Would book again" },
 ];
 
 export function About() {
@@ -37,7 +38,7 @@ export function About() {
               <div key={s.label}>
                 <dt className="text-xs text-ink-800/60 dark:text-lagoon-50/60">{s.label}</dt>
                 <dd className="font-display text-3xl font-semibold text-lagoon-700 dark:text-saffron-400">
-                  {s.value}
+                  <CountUp to={s.to} suffix={s.suffix} />
                 </dd>
               </div>
             ))}

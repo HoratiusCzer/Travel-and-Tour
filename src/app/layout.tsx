@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { Fraunces, Outfit } from "next/font/google";
 import { Footer } from "@/components/layout/Footer";
+import { FloatingActions } from "@/components/layout/FloatingActions";
 import { Header } from "@/components/layout/Header";
+import { ScrollProgress } from "@/components/layout/ScrollProgress";
+import { WishlistProvider } from "@/components/wishlist/WishlistProvider";
 import "./globals.css";
 
 const fraunces = Fraunces({ subsets: ["latin"], variable: "--font-fraunces", display: "swap" });
@@ -23,9 +26,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body>
-        <Header />
-        <main>{children}</main>
-        <Footer />
+        <WishlistProvider>
+          <ScrollProgress />
+          <Header />
+          <main>{children}</main>
+          <Footer />
+          <FloatingActions />
+        </WishlistProvider>
       </body>
     </html>
   );

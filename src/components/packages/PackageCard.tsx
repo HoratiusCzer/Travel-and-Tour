@@ -3,6 +3,8 @@ import { getDestination } from "@/data/destinations";
 import type { TourPackage } from "@/data/packages";
 import { cn } from "@/lib/cn";
 import { formatPrice } from "@/lib/format";
+import { HeartButton } from "@/components/wishlist/HeartButton";
+import { packageKey } from "@/lib/wishlist-keys";
 
 export function PackageCard({ pkg }: { pkg: TourPackage }) {
   const destination = getDestination(pkg.destinationSlug);
@@ -19,10 +21,15 @@ export function PackageCard({ pkg }: { pkg: TourPackage }) {
           Most loved
         </span>
       )}
-      <p className="text-sm text-lagoon-700 dark:text-lagoon-200">
+      <HeartButton
+        itemKey={packageKey(pkg.id)}
+        name={pkg.title}
+        className="absolute right-4 top-4 !bg-lagoon-600/10 !text-lagoon-700 hover:!bg-lagoon-600/20 dark:!text-lagoon-200"
+      />
+      <p className="pr-12 text-sm text-lagoon-700 dark:text-lagoon-200">
         {destination?.name}, {destination?.country}
       </p>
-      <h3 className="mt-1 text-2xl font-semibold text-ink-900 dark:text-white">{pkg.title}</h3>
+      <h3 className="mt-1 pr-12 text-2xl font-semibold text-ink-900 dark:text-white">{pkg.title}</h3>
       <p className="mt-1 text-sm text-ink-800/70 dark:text-lagoon-50/70">
         {pkg.days} days · {pkg.groupSize}
       </p>
