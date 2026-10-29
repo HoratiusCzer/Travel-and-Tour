@@ -9,9 +9,9 @@ export function DestinationCard({ destination }: { destination: Destination }) {
     <div className="relative">
       <Link
         href={`/destinations/${destination.slug}`}
-        className="img-reveal group relative block bg-ink-900 shadow-md"
+        className="dest-card relative block"
       >
-        <div className="relative aspect-[4/5]">
+        <div className="relative aspect-square">
           <Image
             src={destination.image}
             alt={`${destination.name}, ${destination.country}`}
@@ -19,7 +19,7 @@ export function DestinationCard({ destination }: { destination: Destination }) {
             sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-ink-950/85 via-ink-950/10 to-transparent" />
+          <div className="dest-card-shade absolute inset-0 bg-gradient-to-t from-ink-950/85 via-ink-950/10 to-transparent" />
         </div>
         <div className="absolute inset-x-0 bottom-0 p-5 text-white">
           <span className="rounded-full bg-white/15 px-3 py-1 text-xs backdrop-blur">{destination.category}</span>

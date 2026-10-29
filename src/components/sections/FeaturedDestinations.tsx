@@ -18,7 +18,7 @@ export function FeaturedDestinations() {
           fallback={
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" aria-busy="true">
               {Array.from({ length: 6 }, (_, i) => (
-                <Skeleton key={i} className="aspect-[4/5]" />
+                <Skeleton key={i} className="aspect-square" />
               ))}
             </div>
           }

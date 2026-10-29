@@ -80,6 +80,101 @@
   }
 }
 
+/* Destination cards. On dark backgrounds (the animated section, dark mode) they become frosted glass
+   with a faint photo so the animation behind shows through; hover or focus reveals the place. */
+.dest-card {
+  overflow: hidden;
+  border-radius: 16px;
+  background: var(--color-ink-900);
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+.dest-card img {
+  filter: grayscale(100%);
+  transform: scale(1);
+  transition:
+    filter 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, filter, opacity;
+}
+.dark .dest-card {
+  background: rgba(255, 255, 255, 0.04);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: none;
+}
+.dark .dest-card img {
+  opacity: 0.15;
+}
+.dark .dest-card .dest-card-shade {
+  opacity: 0;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.dest-card:hover img,
+.dest-card:focus-visible img,
+.dest-card:has(:focus-visible) img {
+  filter: grayscale(0%);
+  transform: scale(1.08);
+  opacity: 1;
+}
+.dark .dest-card:hover .dest-card-shade,
+.dark .dest-card:focus-visible .dest-card-shade,
+.dark .dest-card:has(:focus-visible) .dest-card-shade {
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .dest-card img,
+  .dark .dest-card .dest-card-shade {
+    transition-duration: 0.2s;
+  }
+  .dest-card:hover img,
+  .dest-card:focus-visible img,
+  .dest-card:has(:focus-visible) img {
+    transform: none;
+  }
+}
+@media (hover: none) {
+  .dest-card img,
+  .dark .dest-card img {
+    filter: none;
+    opacity: 0.6;
+  }
+  .dark .dest-card .dest-card-shade {
+    opacity: 1;
+  }
+}
+
+/* Cards on the packages route brighten their border once the line reaches them (the "Most loved" card keeps its own). */
+.package-route > article {
+  transition: border-color 0.5s;
+}
+.package-route > article[data-reached="true"]:not([data-popular]) {
+  border-color: color-mix(in srgb, var(--color-saffron-500) 40%, transparent);
+}
+/* The Trip budget eyebrow starts muted and warms to the accent once the packages route lands above it. */
+[data-route-target] {
+  color: color-mix(in srgb, var(--color-ink-800) 55%, transparent);
+  transition: color 0.5s;
+}
+.dark [data-route-target] {
+  color: color-mix(in srgb, var(--color-lagoon-50) 55%, transparent);
+}
+[data-route-target][data-reached="true"] {
+  color: var(--color-saffron-600);
+}
+.dark [data-route-target][data-reached="true"] {
+  color: var(--color-saffron-400);
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-route-target] {
+    transition: none;
+  }
+  .package-route > article {
+    transition: none;
+  }
+}
+
 @keyframes page-in {
   from {
     opacity: 0;

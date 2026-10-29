@@ -3,6 +3,7 @@ import { getDestination } from "@/data/destinations";
 import type { TourPackage } from "@/data/packages";
 import { cn } from "@/lib/cn";
 import { formatPrice } from "@/lib/format";
+import { ItineraryButton } from "./ItineraryButton";
 import { HeartButton } from "@/components/wishlist/HeartButton";
 import { packageKey } from "@/lib/wishlist-keys";
 
@@ -11,6 +12,7 @@ export function PackageCard({ pkg }: { pkg: TourPackage }) {
 
   return (
     <article
+      data-popular={pkg.popular ? "" : undefined}
       className={cn(
         "relative flex flex-col rounded-2xl border bg-white p-6 shadow-sm dark:bg-ink-900",
         pkg.popular ? "border-saffron-500" : "border-lagoon-600/15 dark:border-white/10",
@@ -56,6 +58,7 @@ export function PackageCard({ pkg }: { pkg: TourPackage }) {
           View trip
         </Link>
       </div>
+      <ItineraryButton pkg={pkg} />
     </article>
   );
 }
