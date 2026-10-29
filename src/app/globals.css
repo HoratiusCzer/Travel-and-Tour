@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+  --font-sans: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+
+  /* Lagoon + Saffron palette */
+  --color-lagoon-50: #ecfdfa;
+  --color-lagoon-100: #cff8f0;
+  --color-lagoon-200: #a0f0e1;
+  --color-lagoon-400: #3fd0bd;
+  --color-lagoon-500: #1ab5a3;
+  --color-lagoon-600: #0f9285;
+  --color-lagoon-700: #0f746b;
+  --color-lagoon-900: #0c3f3c;
+  --color-saffron-400: #fbb43c;
+  --color-saffron-500: #f59a0c;
+  --color-saffron-600: #d97a06;
+  --color-sand-50: #fbf8f3;
+  --color-sand-100: #f4eee3;
+  --color-ink-800: #12312f;
+  --color-ink-900: #0a1f1e;
+  --color-ink-950: #061413;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+  body {
+    @apply bg-sand-50 font-sans text-ink-800 antialiased dark:bg-ink-950 dark:text-lagoon-50/90;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-display tracking-tight;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-lagoon-500;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
