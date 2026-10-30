@@ -146,10 +146,10 @@
 }
 
 /* Cards on the packages route brighten their border once the line reaches them (the "Most loved" card keeps its own). */
-.package-route > article {
-  transition: border-color 0.5s;
+.package-route > article > .package-card {
+  transition-duration: 0.3s;
 }
-.package-route > article[data-reached="true"]:not([data-popular]) {
+.package-route > article[data-reached="true"]:not([data-popular]):not(:hover):not(:has(:focus-visible)) > .package-card {
   border-color: color-mix(in srgb, var(--color-saffron-500) 40%, transparent);
 }
 /* The Trip budget eyebrow starts muted and warms to the accent once the packages route lands above it. */
@@ -170,8 +170,8 @@
   [data-route-target] {
     transition: none;
   }
-  .package-route > article {
-    transition: none;
+  .package-route > article > .package-card {
+    transition-property: box-shadow, border-color;
   }
 }
 

@@ -188,13 +188,17 @@ export function PackageJourney({ children }: { children: ReactNode }) {
     const grid = wrap.querySelector(".package-route");
     if (grid) mo.observe(grid, { childList: true });
     // The sections slide in as they appear (a transform), which moves positions without resizing anything.
-    wrap.addEventListener("transitionend", schedule);
+    const onTransitionEnd = (e: TransitionEvent) => {
+      if ((e.target as Element).closest(".package-card")) return; // card hover effects do not move the cards
+      schedule();
+    };
+    wrap.addEventListener("transitionend", onTransitionEnd);
     measure();
     return () => {
       cancelAnimationFrame(raf);
       ro.disconnect();
       mo.disconnect();
-      wrap.removeEventListener("transitionend", schedule);
+      wrap.removeEventListener("transitionend", onTransitionEnd);
     };
   }, []);
 

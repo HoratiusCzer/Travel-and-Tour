@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { ArrowRight } from "lucide-react";
 import { createPortal } from "react-dom";
 import { Container } from "@/components/ui/Container";
 import type { TourPackage } from "@/data/packages";
@@ -34,9 +35,13 @@ export function ItineraryButton({ pkg }: { pkg: TourPackage }) {
         ref={triggerRef}
         type="button"
         onClick={() => setOpen(true)}
-        className="mt-4 w-full rounded-full border border-lagoon-600/40 px-5 py-2.5 text-sm font-semibold text-lagoon-700 transition hover:bg-lagoon-50 dark:border-lagoon-400/40 dark:text-lagoon-200 dark:hover:bg-lagoon-900"
+        className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full border border-lagoon-600/40 px-5 py-2.5 text-sm font-semibold text-lagoon-700 transition hover:bg-lagoon-50 dark:border-lagoon-400/40 dark:text-lagoon-200 dark:hover:bg-lagoon-900"
       >
         View itinerary
+        <ArrowRight
+          aria-hidden
+          className="h-4 w-4 transition-transform duration-300 ease-out motion-safe:group-hover/card:translate-x-1 motion-safe:group-has-[:focus-visible]/card:translate-x-1"
+        />
       </button>
       {open &&
         createPortal(

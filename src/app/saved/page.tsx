@@ -11,7 +11,7 @@ export default function SavedPage() {
       <SectionHeading
         eyebrow="Your wishlist"
         title="Saved trips"
-        description="Destinations and packages you have hearted. They are stored in this browser."
+        description="Destinations you have hearted. They are stored in this browser."
       />
       <SavedList />
     </Container>
